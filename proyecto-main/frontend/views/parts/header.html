@@ -1,0 +1,68 @@
+    <div class="contenedorIzq d-flex align-items-center">
+        <i id="config" class="config fa-solid fa-bars"></i>
+    </div>
+    <div id="sidebar" class="sidebar">
+            <div class="amigoContainer d-flex flex-row" id="amigoContainer">
+                <i id="amigo" class="fa-solid fa-user-group fs-4 mt-1 amigo"></i>
+                <div id="listaAmigos" class="dropdown-amigos oculto"></div>
+                <p id="info" class="info ml-2"></p>
+            </div>
+            <hr class="bg-white">
+            
+            <p><a href="/frontend/views/index/busqueda.html" class="text-white text-decoration-underline">Inicio</a></p>
+            <p><a href="/frontend/views/fiestas/subirFiesta.html" class="text-white text-decoration-underline">Subir una fiesta</a></p>
+            <p><a href="/frontend/views/fiestas/misFiestas.html" class="text-white text-decoration-underline">Mis fiestas</a></p>
+            <p><a href="#" class="text-white text-decoration-underline">Reporte</a></p>
+            <div class="anadir">
+                <form class="formHeader" id="formHeader">
+                    <input type="text" id="anadir" class="form-control form-control-sm" placeholder="Añadir amigo...">  
+                    <input type="submit" value="Buscar Amigo..." class="btn btn-success btn-sm w-100" id="buscarAmigo">
+                </form>
+            </div>
+            <button class="logout btn btn-sm btn-danger m-3" id="logout">Cerrar sesión</button>
+
+    </div>
+    <div class="contenedorDer d-flex flex-row align-items-center">
+        <p class="web mt-3 mr-3 p-1 rounded">PartyMatch</p>
+        <div class="notificacion" id="notificacion">
+            <i class="iconoNotificacion fa-regular fa-bell fs-4" id="icono"></i>
+            <span id="nNotificacion"></span>
+            <div id="listaSolicitudes" class="dropdown-solicitudes oculto"></div>
+        </div>
+        
+    </div>
+    
+    <div id="overlay" class="overlay">
+        <div id="formularioEdicion" class="formularioEdicion">
+            <h3 class="h3 text-dark">Editar Datos de Usuario</h3>
+            <form id="form-editar-usuario" method="post"  action="http://127.0.0.1:3000/usuario/editarUsuario">
+                <label for="nombreUsuario" class="form-label text-dark">Nombre de Usuario:</label>
+                <input type="text" id="nombreUsuario" name="nombreUsuario" class="form-control form-control-sm">
+                <span id="nombreError" class="text-danger"></span>
+                <br>
+
+                <label for="correo" class="form-label text-dark">Correo:</label>
+                <input type="email" id="correo" name="correo" class="form-control form-control-sm">
+                <span id="correoError" class="text-danger fs-1"></span>
+                <br>
+
+                <label for="edad" class="form-label text-dark">Edad:</label>
+                <input type="number" id="edad" name="edad" class="form-control form-control-sm">
+                <span id="edadError" class="text-danger fs-1"></span>
+                <br>
+
+                <label for="ciudad" class="form-label text-dark">Ciudad:</label>
+                <select name="ciudad" id="ciudad" class="form-control form-control-sm">
+                    <option value="madrid"> Madrid</option>
+                    <option value="barcelona"> Barcelona</option>
+                </select>
+                <span id="ciudadError" class="text-danger fs-1"></span>
+                <br> 
+
+                <button type="submit" class="btn btn-sm-primary" id="boton">Guardar Cambios</button>
+                <button type="reset" id="botonCancelar" class="btn btn-danger">Cancelar</button>
+                
+        
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,262 @@
+:root {
+  --primary-color: #4361ee;
+  --secondary-color: #3f37c9;
+  --dark-color: #1a1a2e;
+  --light-color: #f8f9fa;
+  --accent-color: #4cc9f0;
+  --error-color: #f72585;
+  --success-color: #06d6a0;
+  --danger-color: #ef476f;
+  --shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease;
+}
+
+body {
+  background-color: var(--dark-color);
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--light-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 1rem;
+  overflow-y: hidden;
+}
+
+h3.busca {
+  font-size: 1.8rem;
+}
+
+
+.containerBody{
+  width: 100%;
+}
+
+.sidebarAmigos{
+  position: relative;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  overflow-y: hidden;
+  padding: 10px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+#contenedorFiestas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.tarjeta {
+  flex: 1 1 250px;
+  max-width: 350px;
+  background-color: #1a1a2e;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  color: var(--light-color);
+  transition: var(--transition);
+}
+
+.tarjeta h3 {
+  text-decoration: underline;
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.fav, .dislike {
+  font-size: 1.5rem;
+  border-radius: 50%;
+  padding: 0.75rem;
+  width: 50px;
+  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+
+.fav {
+  background-color: var(--success-color);
+  color: var(--light-color);
+}
+
+.dislike {
+  background-color: var(--danger-color);
+  color: var(--light-color);
+}
+
+.fav:hover, .dislike:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+} 
+
+
+#contenedorAmigos {
+  background: #2b2b2b;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 2px solid var(--secondary-color);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.amigo-card {
+  background-color: var(--light-color);
+  color: black;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.ciudad{
+  position: relative;
+  text-align: right;
+}
+
+
+@media (max-width: 768px) {
+  body{
+    overflow: visible;
+    margin-bottom: 100px;
+  }
+  .sidebarAmigos {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    width: 100%;
+    height: auto;
+    background-color: rgba(0,0,0,0.95);
+    padding: 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    overflow-x: auto;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
+  }
+
+  #contenedorAmigos {
+    width: 100%;
+    max-height: 250px;
+    min-height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  #contenedorAmigos {
+    max-height: 200px;
+  }
+
+  .amigo-card {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+}
+
+@keyframes swipeRight {
+  0% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(150%) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+@keyframes swipeLeft {
+  0% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-150%) rotate(-20deg);
+    opacity: 0;
+  }
+}
+
+.swipe-right {
+  animation: swipeRight 0.5s forwards;
+  pointer-events: none;
+}
+
+.swipe-left {
+  animation: swipeLeft 0.5s forwards;
+  pointer-events: none;
+}
+
+.aurora-1, .aurora-2 {
+  position: absolute;
+  z-index: -20;
+  opacity: 0.4;
+}
+
+.aurora-1 {
+  bottom: 0;
+  left: -10%;
+  height: 75%;
+  max-width: 100%;
+}
+
+.aurora-2 {
+  top: 0;
+  right: 20%;
+  height: 50%;
+  rotate: 70deg;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  h3.busca {
+    font-size: 1.4rem;
+  }
+
+  .tarjeta h3 {
+    font-size: 1.2rem;
+  }
+
+  .fav, .dislike {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h3.busca {
+    font-size: 1.2rem;
+  }
+
+  .container {
+    padding: 0.5rem;
+  }
+
+  .tarjeta {
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .aurora-1, .aurora-2 {
+    opacity: 0.2;
+  }
+}

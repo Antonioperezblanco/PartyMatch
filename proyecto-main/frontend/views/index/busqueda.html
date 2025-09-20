@@ -1,0 +1,39 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="/frontend/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/frontend/css/header.css">
+        <link rel="stylesheet" href="/frontend/css/busqueda.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&family=Tagesschrift&display=swap" rel="stylesheet">
+        
+        <title>Busqueda</title>
+    </head>
+    <body>
+        <nav class="header-container position-absolute" id="header-container"></nav>
+        
+        <div class="busquedaContainer container">
+            <h1 class="d-flex justify-content-center">
+                <span class="busca">¿QUÉ BUSCAS?</span>
+                <input type="date" name="fecha" id="fecha" class="form-control-sm m-2">
+            </h1>
+            
+            <div class="text-center" id="botonContainer">
+                <button class="btn btn-primary m-2 p-3" id="btnDiscoteca">DISCOTECA</button>
+                <button class="btn btn-primary m-2 p-3" id="btnFiesta">FIESTA PRIVADA</button> 
+                <button class="btn btn-secondary m-2 p-3" id="btnAmbas">AMBAS</button>
+                <br>
+                <span class="text-danger" id="sinFecha"></span>
+            </div>
+        </div>
+        <img class="aurora-1" src="https://cdn.openwebinars.net/static/public/images/aurora-1.60a81233ca02.webp" alt="Aurora">
+        <img class="aurora-2" src="https://cdn.openwebinars.net/static/public/images/aurora-2.fd71533d8ae9.webp" alt="Aurora">
+        <script src="/scripts/fiestas/scriptBusqueda.js"></script>
+        <script src="/scripts/scriptHeader.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </body>
+    </html>
