@@ -10,30 +10,33 @@ import {
 } from "../backend/Controllers/usuarioController.js";
 
 export default async function handler(req, res) {
-  // Conectamos a MongoDB Atlas usando la variable de entorno
+  // Conectamos a MongoDB Atlas
   await connectDB(process.env.MONGODB_URI);
 
-  const { method, url } = req;
+  const { method } = req;
+  
+  // Extraemos la ruta después de /api/usuario
+  const path = req.url.replace(/^\/api\/usuario/, "");
 
-  if (method === "POST" && url.endsWith("/crear")) {
+  if (method === "POST" && path === "/crear") {
     return crearUsuario(req, res);
 
-  } else if (method === "POST" && url.endsWith("/inicioSesion")) {
+  } else if (method === "POST" && path === "/inicioSesion") {
     return inicioSesion(req, res);
 
-  } else if (method === "PUT" && url.endsWith("/editarUsuario")) {
+  } else if (method === "PUT" && path === "/editarUsuario") {
     return editarUsuario(req, res);
 
-  } else if (method === "POST" && url.endsWith("/anadir")) {
+  } else if (method === "POST" && path === "/anadir") {
     return anadirAmigo(req, res);
 
-  } else if (method === "POST" && url.endsWith("/aceptar")) {
+  } else if (method === "POST" && path === "/aceptar") {
     return aceptarSolicitud(req, res);
 
-  } else if (method === "POST" && url.endsWith("/rechazar")) {
+  } else if (method === "POST" && path === "/rechazar") {
     return rechazarSolicitud(req, res);
 
-  } else if (method === "POST" && url.endsWith("/eliminar")) {
+  } else if (method === "POST" && path === "/eliminar") {
     return eliminarAmigo(req, res);
 
   } else {
