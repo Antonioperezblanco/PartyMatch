@@ -1,41 +1,34 @@
 import connectDB from "../backend/database/db.js";
 import { 
-  buscarFiesta, 
-  crearFiesta, 
-  unirseFiesta, 
-  cambiarCiudad, 
-  verFiestas, 
-  desapuntarse 
+  crearFiesta, buscarFiesta, unirseFiesta, cambiarCiudad, verFiestas, desapuntarse 
 } from "../backend/Controllers/fiestaController.js";
 import { mostrarAmigos } from "../backend/Controllers/usuarioController.js";
 
 export default async function handler(req, res) {
+  // Conectar a MongoDB
   await connectDB(process.env.MONGODB_URI);
 
-  const { method, url } = req;
+  const { method } = req;
+  const { action } = req.query; // ?action=crear, ?action=buscar, etc.
 
-  if (method === "POST" && url.endsWith("/crear")) {
-    return crearFiesta(req, res);
+  if (method !== "POST") return res.status(405).json({ error: "Método no permitido" });
 
-  } else if (method === "POST" && url.endsWith("/buscar")) {
-    return buscarFiesta(req, res);
-
-  } else if (method === "POST" && url.endsWith("/unirse")) {
-    return unirseFiesta(req, res);
-
-  } else if (method === "POST" && url.endsWith("/mostrar")) {
-    return mostrarAmigos(req, res);
-
-  } else if (method === "POST" && url.endsWith("/cambiarCiudad")) {
-    return cambiarCiudad(req, res);
-
-  } else if (method === "POST" && url.endsWith("/misFiestas")) {
-    return verFiestas(req, res);
-
-  } else if (method === "POST" && url.endsWith("/desapuntarse")) {
-    return desapuntarse(req, res);
-
-  } else {
-    res.status(404).json({ error: "Ruta no encontrada" });
+  switch (action) {
+    case "crear":
+      return crearFiesta(req, res);
+    case "buscar":
+      return buscarFiesta(req, res);
+    case "unirse":
+      return unirseFiesta(req, res);
+    case "mostrar":
+      return mostrarAmigos(req, res);
+    case "cambiarCiudad":
+      return cambiarCiudad(req, res);
+    case "misFiestas":
+      return verFiestas(req, res);
+    case "desapuntarse":
+      return desapuntarse(req, res);
+    default:
+      return res.status(404).json({ error: "Ruta no encontrada" });
   }
 }
