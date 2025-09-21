@@ -2,7 +2,6 @@ import Discoteca from '../models/Discoteca.js'
 import FiestaPrivada from '../models/FiestaPrivada.js'
 import { findDiscotecaById, findFiestaPrivadaById } from '../database/fiestaDB.js';
 import { findByUsername, saveUser } from '../database/usuariosDB.js';
-import Usuario from '../models/Usuario.js';
 import Counter from '../models/Counter.js';
 
 export const crearFiesta = async (req, res) => {

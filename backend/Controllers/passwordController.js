@@ -39,14 +39,14 @@ export const solicitarRecuperacion = async (req, res) => {
         await createToken(usuario.id, token);
 
         // Crear enlace de recuperación
-        const link = `http://127.0.0.1:3000/pass/restablecer/${token}`;
+        const link = `${process.env.FRONTEND_URL}/usuario/cambiarPass.html?token=${token}`;
 
         // Configurar transporte de correo
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'buscasfiestass@gmail.com',
-                pass: 'otlp jjjh tdhr iqur'
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
             }
         });
 
