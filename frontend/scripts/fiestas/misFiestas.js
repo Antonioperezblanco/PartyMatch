@@ -12,10 +12,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             nombreUsuario: usuario.nombreUsuario,
             desde: hoy    
         };
-    const response = await fetch("/api/fiesta/misFiestas", {
+    const response = await fetch("/api/fiesta", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(datos),
+      body: JSON.stringify({
+        action: "misFiestas",
+        ...datos}),
     });
 
     const data = await response.json();
@@ -113,10 +115,12 @@ async function desapuntarseDeFiesta(idFiesta, elementoDOM) {
       idFiesta: idFiesta
     };
 
-    const response = await fetch("/api/fiesta/desapuntarse", {
+    const response = await fetch("/api/fiesta", {
       method: "POST", 
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(datos)
+      body: JSON.stringify({
+        action: "desapuntarse",
+        ...datos})
     });
 
     const result = await response.json();

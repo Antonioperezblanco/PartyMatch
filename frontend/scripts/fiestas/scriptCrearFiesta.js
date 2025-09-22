@@ -308,12 +308,13 @@ formFiesta.addEventListener("submit", async function(event){
             tuAlcohol: alcoholChecked         
         };
         try {
-            const respuesta = await fetch('/api/fiesta/crear', {
+            const respuesta = await fetch('/api/fiesta', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(datos)
+                body: JSON.stringify({
+                    action: "crear",
+                    ...datos})
             });
-    
             const resultado = await respuesta.json();
     
             if (respuesta.ok) {

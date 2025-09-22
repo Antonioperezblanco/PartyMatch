@@ -85,12 +85,15 @@ function iniciarEdicionUsuario() {
         };
 
         try {
-            const link= "https://proyecto-efpl-lopmx2y5d-antonioperezblancos-projects.vercel.app"
-            const respuesta = await fetch(`${link}/api/usuario/editarUsuario'`, {
+                const respuesta = await fetch('/api/usuario', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(updatedUsuario)
+                body: JSON.stringify({
+                    action: 'editarUsuario',
+                    ...updatedUsuario
+                })
             });
+
             const resultado = await respuesta.json();
 
             if (respuesta.ok) {
@@ -231,10 +234,12 @@ function configurarFormularioAmigo() {
         };
 
         try {
-            const respuesta = await fetch(`${link}/api/usuario/anadir`, {
+            const respuesta = await fetch('/api/usuario', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(datos)
+                body: JSON.stringify({
+                    action: 'anadir',
+                    datos})
             });
 
             const resultado = await respuesta.json();
@@ -304,10 +309,11 @@ async function aceptar(i) {
     const receptor = JSON.parse(sessionStorage.getItem('usuario'));
 
     try {
-        const respuesta = await fetch(`${link}/api/usuario/aceptar`, {
+        const respuesta = await fetch('/api/usuario', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
+                action: 'aceptar',
                 usuario: solicitud.usuario,
                 receptor: receptor.nombreUsuario
             })
@@ -346,10 +352,11 @@ async function rechazar(i) {
     const receptor = JSON.parse(sessionStorage.getItem('usuario'));
 
     try {
-        const respuesta = await fetch(`${link}/api/usuario/rechazar`, {
+        const respuesta = await fetch('/api/usuario', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
+                action: 'rechazar',
                 usuario: solicitud.usuario,
                 receptor: receptor.nombreUsuario
             })
@@ -440,10 +447,11 @@ async function eliminar(i) {
             const amigo = amigos[i];
 
             try {
-                const respuesta = await fetch('/api/usuario/eliminar', {
+                const respuesta = await fetch('/api/usuario', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
+                        action: 'eliminar',
                         usuario: usuario,
                         amigo: amigo
                     })

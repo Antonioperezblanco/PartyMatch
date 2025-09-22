@@ -5,30 +5,27 @@ import {
 import { mostrarAmigos } from "../backend/Controllers/usuarioController.js";
 
 export default async function handler(req, res) {
-  // Conectar a MongoDB
   await connectDB(process.env.MONGODB_URI);
 
-  const { method } = req;
-  const { action } = req.query; // ?action=crear, ?action=buscar, etc.
+  const { method, body } = req;
 
   if (method !== "POST") return res.status(405).json({ error: "Método no permitido" });
 
-  switch (action) {
-    case "crear":
-      return crearFiesta(req, res);
-    case "buscar":
-      return buscarFiesta(req, res);
-    case "unirse":
-      return unirseFiesta(req, res);
-    case "mostrar":
-      return mostrarAmigos(req, res);
-    case "cambiarCiudad":
-      return cambiarCiudad(req, res);
-    case "misFiestas":
-      return verFiestas(req, res);
-    case "desapuntarse":
-      return desapuntarse(req, res);
-    default:
-      return res.status(404).json({ error: "Ruta no encontrada" });
+  if (body.action === "crear") {
+    return crearFiesta(req, res);
+  } else if (body.action === "buscar") {
+    return buscarFiesta(req, res);
+  } else if (body.action === "unirse") {
+    return unirseFiesta(req, res);
+  } else if (body.action === "mostrar") {
+    return mostrarAmigos(req, res);
+  } else if (body.action === "cambiarCiudad") {
+    return cambiarCiudad(req, res);
+  } else if (body.action === "misFiestas") {
+    return verFiestas(req, res);
+  } else if (body.action === "desapuntarse") {
+    return desapuntarse(req, res);
+  } else {
+    return res.status(404).json({ error: "Ruta no encontrada" });
   }
 }

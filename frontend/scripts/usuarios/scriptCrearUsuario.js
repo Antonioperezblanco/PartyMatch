@@ -156,10 +156,12 @@ formulario.addEventListener("submit", async function(event) {
     };
 
     try {
-        const respuesta = await fetch('/api/usuario/crear', {
+        const respuesta = await fetch('/api/usuario', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(datos)
+            body: JSON.stringify({
+                action: "crear",
+                ...datos})
         });
 
         const resultado = await respuesta.json();

@@ -8,7 +8,6 @@ const submit = document.getElementById("submit");
 const formInicio = document.querySelector("form");
 
 const token = window.location.pathname.split("/").pop();
-formInicio.action = `http://127.0.0.1:3000/pass/restablecer/${token}`;
 
 mostrar.addEventListener("click", () => {
     if (pass.type === "password") {
@@ -73,10 +72,14 @@ formInicio.addEventListener("submit", async function(event) {
     const token = window.location.pathname.split('/').pop();
 
     try {
-        const respuesta = await fetch(`http://127.0.0.1:3000/pass/restablecer/${token}`, {
-            method: 'POST',  
+       const respuesta = await fetch('/api/pass', {
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nuevaPass: nuevaPass })  
+            body: JSON.stringify({
+                action: 'restablecer',
+                token: token,
+                nuevaPass: nuevaPass
+            })
         });
 
         if (!respuesta.ok) {

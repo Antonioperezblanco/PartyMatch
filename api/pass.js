@@ -4,23 +4,18 @@ import { solicitarRecuperacion, restablecerPass, mostrarFormulario } from "../..
 export default async function handler(req, res) {
   await connectDB(process.env.MONGODB_URI);
 
-  const { method, query } = req;
-  const params = query.params || []; // esto contiene la parte dinámica de la URL
+  const { method, body } = req;
 
-  if (method === "POST" && params[0] === "solicitar") {
+  if (method === "POST" && body.action === "solicitar") {
     return solicitarRecuperacion(req, res);
-
-  } else if (method === "POST" && params[0] === "restablecer" && params[1]) {
-    req.params = { token: params[1] }; // simula req.params.token
+  } else if (method === "POST" && body.action === "restablecer" && body.token) {
+    req.params = { token: body.token };
     return restablecerPass(req, res);
-
-  } else if (method === "GET" && params[0] === "restablecer" && params[1]) {
-    req.params = { token: params[1] }; // para mostrarFormulario
+  } else if (method === "GET" && body.action === "restablecer" && body.token) {
+    req.params = { token: body.token };
     return mostrarFormulario(req, res);
-
-  } else if (method === "GET" && params[0] === "mostrarFormulario") {
+  } else if (method === "GET" && body.action === "mostrarFormulario") {
     return mostrarFormulario(req, res);
-
   } else {
     return res.status(404).json({ error: "Ruta no encontrada" });
   }
