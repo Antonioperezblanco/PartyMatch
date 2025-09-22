@@ -308,7 +308,7 @@ formFiesta.addEventListener("submit", async function(event){
             tuAlcohol: alcoholChecked         
         };
         try {
-            const respuesta = await fetch('http://127.0.0.1:3000/fiesta/crear', {
+            const respuesta = await fetch('/api/fiesta/crear', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(datos)
@@ -333,5 +333,5 @@ formFiesta.addEventListener("submit", async function(event){
     
     
 } else{
-    window.location.href = "/frontend/views/usuarios/CrearUsuario.html"; 
+    window.location.href = "/frontend/index.html"; 
 }

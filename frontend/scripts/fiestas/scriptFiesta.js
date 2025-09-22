@@ -28,7 +28,7 @@ if (sessionStorage.getItem('origen') == 'crear' || sessionStorage.getItem('orige
     };
 
     try{
-        const respuesta = await fetch('http://127.0.0.1:3000/fiesta/buscar', {
+        const respuesta = await fetch('/api/fiesta/buscar', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(datos)
@@ -49,7 +49,7 @@ if (sessionStorage.getItem('origen') == 'crear' || sessionStorage.getItem('orige
             nombreUsuario: usuario.nombreUsuario
         }
         console.log(dato)
-        const response = await fetch('http://127.0.0.1:3000/fiesta/mostrar', {
+        const response = await fetch('/api/fiesta/mostrar', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dato)
@@ -99,7 +99,7 @@ if (sessionStorage.getItem('origen') == 'crear' || sessionStorage.getItem('orige
                 nombreUsuario: nombreUsuario,
                 ciudad: ciudad
             };
-            const response = await fetch('http://127.0.0.1:3000/fiesta/cambiarCiudad', {
+            const response = await fetch('/api/fiesta/cambiarCiudad', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(datos)
@@ -125,7 +125,7 @@ if (sessionStorage.getItem('origen') == 'crear' || sessionStorage.getItem('orige
     })
     
 } else{
-    window.location.href = "/frontend/views/usuarios/CrearUsuario.html"; 
+    window.location.href = "/frontend/index.html"; 
 }
 
 function mostrarFiestas(fiestas) {
@@ -195,7 +195,7 @@ function mostrarFiestas(fiestas) {
             };
 
             try{
-                 const respuesta = await fetch('http://127.0.0.1:3000/fiesta/unirse', {
+                 const respuesta = await fetch('/api/fiesta/unirse', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({

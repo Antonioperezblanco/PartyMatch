@@ -5,7 +5,7 @@ const email = document.getElementById("email");
 const correoErr = document.getElementById("correoErr");
 
 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-
+const link= "https://proyecto-efpl-lopmx2y5d-antonioperezblancos-projects.vercel.app"
 
 email.addEventListener("input", () => {
     if (!email.value){
@@ -34,7 +34,7 @@ formInicio.addEventListener("submit", async function(event) {
         };
 
     try {
-        const respuesta = await fetch('http://127.0.0.1:3000/pass/solicitar', {
+        const respuesta = await fetch(`${link}/pass/solicitar`, {
             method: 'POST',  
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(datos)  

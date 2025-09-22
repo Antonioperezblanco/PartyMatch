@@ -85,7 +85,8 @@ function iniciarEdicionUsuario() {
         };
 
         try {
-            const respuesta = await fetch('/api/usuario/editarUsuario', {
+            const link= "https://proyecto-efpl-lopmx2y5d-antonioperezblancos-projects.vercel.app"
+            const respuesta = await fetch(`${link}/api/usuario/editarUsuario'`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(updatedUsuario)
@@ -204,6 +205,8 @@ function agregarValidaciones() {
 }
 
 function configurarFormularioAmigo() {
+    const link= "https://proyecto-efpl-lopmx2y5d-antonioperezblancos-projects.vercel.app"
+
     const formularioHeader = document.getElementById("formHeader");
 
     formularioHeader.addEventListener("submit", async (e) => {
@@ -228,7 +231,7 @@ function configurarFormularioAmigo() {
         };
 
         try {
-            const respuesta = await fetch('/api/usuario/anadir', {
+            const respuesta = await fetch(`${link}/api/usuario/anadir`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(datos)
@@ -301,7 +304,7 @@ async function aceptar(i) {
     const receptor = JSON.parse(sessionStorage.getItem('usuario'));
 
     try {
-        const respuesta = await fetch('/api/usuario/aceptar', {
+        const respuesta = await fetch(`${link}/api/usuario/aceptar`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -343,7 +346,7 @@ async function rechazar(i) {
     const receptor = JSON.parse(sessionStorage.getItem('usuario'));
 
     try {
-        const respuesta = await fetch('/api/usuario/rechazar', {
+        const respuesta = await fetch(`${link}/api/usuario/rechazar`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

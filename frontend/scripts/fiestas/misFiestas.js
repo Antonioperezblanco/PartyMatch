@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const usuario = JSON.parse(sessionStorage.getItem("usuario"));
   if (!usuario) {
-    window.location.href = "/frontend/views/usuarios/CrearUsuario.html";
+    window.location.href = "/frontend/index.html";
     return;
   }
 
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             nombreUsuario: usuario.nombreUsuario,
             desde: hoy    
         };
-    const response = await fetch("http://127.0.0.1:3000/fiesta/misFiestas", {
+    const response = await fetch("/api/fiesta/misFiestas", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(datos),
@@ -113,7 +113,7 @@ async function desapuntarseDeFiesta(idFiesta, elementoDOM) {
       idFiesta: idFiesta
     };
 
-    const response = await fetch("http://127.0.0.1:3000/fiesta/desapuntarse", {
+    const response = await fetch("/api/fiesta/desapuntarse", {
       method: "POST", 
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(datos)

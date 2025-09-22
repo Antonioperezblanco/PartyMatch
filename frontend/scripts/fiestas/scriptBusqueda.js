@@ -41,5 +41,5 @@ if (sessionStorage.getItem('origen') == 'crear' || sessionStorage.getItem('orige
         }
     });
 }  else {
-    window.location.href = "/frontend/views/usuarios/CrearUsuario.html"; 
+        window.location.href = "/frontend/index.html"; 
 }
